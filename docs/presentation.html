@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cloud Security Alert Lamp - Complete Presentation Deck</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #080c14;
+      --card-bg: #111827;
+      --card-border: #1f2937;
+      --cyan: #00f0ff;
+      --red: #ff3366;
+      --green: #00e676;
+      --white: #ffffff;
+      --muted: #9ca3af;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--white);
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    .deck {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      padding: 3rem 4rem 5rem 4rem;
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(0.98);
+      transition: all 0.35s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1);
+    }
+
+    .header {
+      margin-bottom: 1.8rem;
+    }
+
+    .tag {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--cyan);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .title {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--white);
+      margin-top: 0.3rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      flex: 1;
+      align-items: center;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      flex: 1;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1.5px solid var(--card-border);
+      border-radius: 16px;
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    }
+
+    .card.cyan { border-color: var(--cyan); }
+    .card.red { border-color: var(--red); }
+    .card.green { border-color: var(--green); }
+
+    .bullets {
+      list-style: none;
+    }
+
+    .bullets li {
+      font-size: 1.05rem;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+    }
+
+    .bullets li strong {
+      color: var(--white);
+    }
+
+    .bullets li::before {
+      content: "•";
+      color: var(--cyan);
+      font-size: 1.5rem;
+      margin-right: 0.5rem;
+    }
+
+    .img-box {
+      border: 2px solid var(--cyan);
+      border-radius: 16px;
+      overflow: hidden;
+      height: 100%;
+      max-height: 480px;
+      box-shadow: 0 0 40px rgba(0, 240, 255, 0.2);
+    }
+
+    .img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .controls {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: #05080f;
+      border-top: 1px solid var(--card-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 3rem;
+      z-index: 100;
+    }
+
+    .btn {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: var(--white);
+      padding: 0.6rem 1.5rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+    }
+
+    .btn:hover {
+      background: var(--cyan);
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+
+<div class="deck">
+
+  <!-- SLIDE 1 -->
+  <div class="slide active">
+    <div class="grid-2">
+      <div>
+        <div class="tag">SYSTEM IMPLEMENTATION PLAN & TECH STACK</div>
+        <h1 style="font-size: 2.8rem; font-weight: 900; color: var(--cyan); margin: 0.5rem 0 1rem 0;">CLOUD SECURITY ALERT LAMP 🚨💡</h1>
+        <p style="font-size: 1.3rem; font-weight: 700; color: var(--white); margin-bottom: 2rem;">S3 Security Scanner ➔ AWS IoT Core ➔ ESP32 & Virtual Red Light Twin</p>
+        <div style="display: flex; flex-direction: column; gap: 0.6rem; color: var(--muted); font-size: 1rem;">
+          <div>👤 <strong>D. Chander</strong> (2503A52214) — Project Lead & Web Twin</div>
+          <div>👤 <strong>G. Rohan</strong> (2503S52224) — System Architecture & Security</div>
+          <div>👤 <strong>K. Arjun</strong> (2503A52235) — Backend & Database Developer</div>
+          <div>👤 <strong>P. Sachin</strong> (2503A52240) — Hardware & Firmware Engineer</div>
+        </div>
+      </div>
+      <div class="img-box">
+        <img src="assets/cloud_security_hero_lamp.png" alt="Cloud Security Lamp">
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 2 -->
+  <div class="slide">
+    <div class="header">
+      <div class="tag">PROJECT OVERVIEW</div>
+      <div class="title">Cloud Security Alert System & Pinout Config</div>
+    </div>
+    <div class="grid-2">
+      <div class="card cyan">
+        <div style="font-size: 1.5rem; font-weight: 800; color: var(--cyan); margin-bottom: 1rem;">System Concept</div>
+        <ul class="bullets">
+          <li><strong>IoT Security Auditor:</strong> AWS Lambda security scanner audits S3 buckets and publishes alerts to AWS IoT Core over MQTT.</li>
+          <li><strong>Physical & Virtual Red Lamp:</strong> Dual alert system: Physical ESP32 Red LED on desk + Virtual glowing Red Lamp on Web UI.</li>
+          <li><strong>AWS Learner Lab Ready:</strong> Automated scripts support standard AWS accounts and AWS Learner Lab pre-created LabRole.</li>
+          <li><strong>Hardware Pinouts:</strong> GPIO 4 drives Red LED (220Ω resistor); GPIO 2 drives status LED (configured in config.h).</li>
+        </ul>
+      </div>
+      <div class="img-box">
+        <img src="assets/cloud_security_hero_lamp.png" alt="Hero Lamp">
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3 -->
+  <div class="slide">
+    <div class="header">
+      <div class="tag">ARCHITECTURE OVERVIEW</div>
+      <div class="title">End-to-End Cyber-Physical Data Flow Diagram</div>
+    </div>
+    <div class="grid-2">
+      <div class="img-box">
+        <img src="assets/architecture_flowchart.png" alt="Architecture Flowchart Diagram">
+      </div>
+      <div class="card green">
+        <div style="font-size: 1.5rem; font-weight: 800; color: var(--green); margin-bottom: 1rem;">Event Execution Flow</div>
+        <ul class="bullets">
+          <li><strong>S3 Trigger / Schedule:</strong> EventBridge Rule or Cron triggers AWS Lambda Auditor Function.</li>
+          <li><strong>3-Layer S3 Audit:</strong> Lambda evaluates PublicAccessBlock, Bucket Policy & S3 ACL Grants.</li>
+          <li><strong>IoT Core & SNS Dispatch:</strong> Publishes payload to AWS IoT Core topic cloud/security/alerts & SNS.</li>
+          <li><strong>Physical & Virtual Actuation:</strong> ESP32 blinks Red LED via TLS MQTT & WebSockets syncs Virtual Red Light.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 4 -->
+  <div class="slide">
+    <div class="header">
+      <div class="tag">PROJECT STRUCTURE</div>
+      <div class="title">Repository Directories & Module Organization</div>
+    </div>
+    <div class="grid-4">
+      <div class="card cyan">
+        <div class="tag">cloud/</div>
+        <div style="font-weight: 800; color: var(--white); margin: 0.4rem 0;">AWS Backend</div>
+        <ul class="bullets">
+          <li>lambda/auditor.py</li>
+          <li>deploy_aws.py</li>
+          <li>test_vulnerable_bucket.py</li>
+        </ul>
+      </div>
+      <div class="card green">
+        <div class="tag" style="color:var(--green)">backend/</div>
+        <div style="font-weight: 800; color: var(--white); margin: 0.4rem 0;">FastAPI Server</div>
+        <ul class="bullets">
+          <li>main.py (REST API)</li>
+          <li>led_controller.py</li>
+          <li>WebSocket /ws</li>
+        </ul>
+      </div>
+      <div class="card cyan">
+        <div class="tag">firmware/</div>
+        <div style="font-weight: 800; color: var(--white); margin: 0.4rem 0;">ESP32 C++/Arduino</div>
+        <ul class="bullets">
+          <li>src/main.cpp</li>
+          <li>include/config.h</li>
+          <li>platformio.ini</li>
+        </ul>
+      </div>
+      <div class="card red">
+        <div class="tag" style="color:var(--red)">web_dashboard/</div>
+        <div style="font-weight: 800; color: var(--white); margin: 0.4rem 0;">Frontend & Virtual Lamp</div>
+        <ul class="bullets">
+          <li>index.html UI</li>
+          <li>styles.css Glassmorphism</li>
+          <li>app.js WebSockets</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 5 -->
+  <div class="slide">
+    <div class="header">
+      <div class="tag">AWS CLOUD BACKEND</div>
+      <div class="title">Lambda Auditor, Deployer & Test CLI (cloud/)</div>
+    </div>
+    <div class="grid-2">
+      <div class="img-box">
+        <img src="assets/security_layers_diag.png" alt="Security Layers">
+      </div>
+      <div class="card red">
+        <div style="font-size: 1.5rem; font-weight: 800; color: var(--red); margin-bottom: 1rem;">Cloud Component Details</div>
+        <ul class="bullets">
+          <li><strong>Lambda Auditor (auditor.py):</strong> Scans S3 GetPublicAccessBlock, GetBucketPolicyStatus & GetBucketAcl. Publishes JSON ALERT/OK payload.</li>
+          <li><strong>1-Click Deployer (deploy_aws.py):</strong> Provisions IoT Thing, Policy, Certs, Lambda zip, EventBridge cron (5 mins), and SNS Topic in < 60s.</li>
+          <li><strong>Test Utility (test_vulnerable_bucket.py):</strong> CLI tool: python test_vulnerable_bucket.py create (triggers lamp) and delete (resolves alert).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 6 -->
+  <div class="slide">
+    <div class="header">
+      <div class="tag">FASTAPI APPLICATION BACKEND</div>
+      <div class="title">Python Async REST API & WebSocket Server (backend/)</div>
+    </div>
+    <div class="grid-2">
+      <div class="card cyan">
+        <div style="font-size: 1.5rem; font-weight: 800; color: var(--cyan); margin-bottom: 1rem;">FastAPI Backend Core</div>
+        <ul class="bullets">
+          <li><strong>Asynchronous Event Loop:</strong> Built on Python asyncio & uvicorn for non-blocking high throughput.</li>
+          <li><strong>REST API Endpoints:</strong> Exposes /api/dashboard, /api/events, and /api/scan for data retrieval.</li>
+          <li><strong>WebSocket Server (/ws):</strong> Maintains persistent WebSocket connections to push live state updates to Web Twin UI.</li>
+          <li><strong>Desktop Lamp Simulator:</strong> python backend/led_controller.py terminal simulator for testing without physical hardware.</li>
+        </ul>
+      </div>
+      <div class="img-box">
+        <img src="assets/cyber_alert_desk.png" alt="Cyber Desk">
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 7 -->
+  <div class="slide">
+    <div class="header">
+      <div class="tag">ESP32 FIRMWARE ENGINE</div>
+      <div class="title">TLS MQTT Client & FreeRTOS State Machine (firmware/)</div>
+    </div>
+    <div class="grid-2">
+      <div class="img-box">
+        <img src="assets/crypto_shield_vault.png" alt="Crypto Vault">
+      </div>
+      <div class="card green">
+        <div style="font-size: 1.5rem; font-weight: 800; color: var(--green); margin-bottom: 1rem;">Firmware Architecture</div>
+        <ul class="bullets">
+          <li><strong>Framework & Libraries:</strong> Built on C++/Arduino using WiFiClientSecure, PubSubClient, and ArduinoJson.</li>
+          <li><strong>TLS X.509 Authentication:</strong> Handles mutual TLS authentication with AWS IoT Core over Port 8883.</li>
+          <li><strong>Non-Blocking Millis FSM:</strong> Blink state machine uses millis() timers without freezing delay() calls.</li>
+          <li><strong>Auto-Reconnect Engine:</strong> Monitors Wi-Fi and MQTT connection loss with automatic exponential reconnects.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 8 -->
+  <div class="slide">
+    <div class="header">
+      <div class="tag">FRONTEND ARCHITECTURE</div>
+      <div class="title">Glassmorphism UI & WebSocket Engine (web_dashboard/)</div>
+    </div>
+    <div class="grid-2">
+      <div class="card cyan">
+        <div style="font-size: 1.5rem; font-weight: 800; color: var(--cyan); margin-bottom: 1rem;">Web Dashboard Stack</div>
+        <ul class="bullets">
+          <li><strong>HTML5 & Glassmorphism CSS:</strong> Modern dark aesthetic with CSS backdrop-filter blur, neon glow effects & clean typography.</li>
+          <li><strong>JavaScript WebSocket Engine:</strong> app.js maintains persistent WebSocket connection to mirror live backend state changes.</li>
+          <li><strong>Real-Time Event Table:</strong> Renders history of scanned bucket names, severity levels, and scan timestamps.</li>
+          <li><strong>Interactive Scenario Runner:</strong> Browser control buttons to simulate public bucket creation and remediation.</li>
+        </ul>
+      </div>
+      <div class="img-box">
+        <img src="assets/neon_dashboard_screen.png" alt="Neon Dashboard">
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 9 -->
+  <div class="slide">
+    <div class="header">
+      <div class="tag">OUR VIRTUAL RED LIGHT</div>
+      <div class="title">Digital Twin Simulator & Synchronous Alert Visualizer</div>
+    </div>
+    <div class="grid-2">
+      <div class="card red">
+        <div style="font-size: 1.5rem; font-weight: 800; color: var(--red); margin-bottom: 1rem;">Virtual Red Light Visualizer</div>
+        <ul class="bullets">
+          <li><strong>Digital Twin Mirror:</strong> Glowing 2D/3D neon Red Alert Lamp rendered directly inside web_dashboard/index.html.</li>
+          <li><strong>Synchronous Blinking:</strong> Flashes in exact 150-200ms lockstep synchronization with the physical ESP32 hardware LED.</li>
+          <li><strong>Zero-Hardware Testing:</strong> Allows evaluators and students without ESP32 hardware to test full end-to-end alert flow.</li>
+          <li><strong>Learner Lab Wizard:</strong> Includes step-by-step interactive manual for copy-pasting AWS Learner Lab X.509 certs.</li>
+        </ul>
+      </div>
+      <div class="img-box" style="border-color: var(--red);">
+        <img src="assets/neon_dashboard_screen.png" alt="Virtual Red Light">
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 10 -->
+  <div class="slide">
+    <div class="header">
+      <div class="tag">VERIFICATION & WIRING PLAN</div>
+      <div class="title">ESP32 Circuit Schematics & End-to-End Verification</div>
+    </div>
+    <div class="grid-2">
+      <div class="card cyan">
+        <div style="font-size: 1.3rem; font-weight: 800; color: var(--cyan); margin-bottom: 0.8rem;">Hardware Wiring (docs/)</div>
+        <ul class="bullets">
+          <li><strong>Circuit Wiring Schematics:</strong> ESP32 DevKit v1 + High-Brightness Red LED + 220Ω limiting resistor on GPIO 4.</li>
+          <li><strong>AWS Student Guide:</strong> Tailored step-by-step setup guide for $50 AWS Learner Lab accounts.</li>
+        </ul>
+      </div>
+      <div class="card green">
+        <div style="font-size: 1.3rem; font-weight: 800; color: var(--green); margin-bottom: 0.8rem;">Verification Plan</div>
+        <ul class="bullets">
+          <li><strong>Automated CLI Test:</strong> Run test_vulnerable_bucket.py create/delete to verify Lambda & IoT Core payload delivery.</li>
+          <li><strong>Hardware Verification:</strong> Verify TLS payload parsing and state transition (OK ➔ ALERT 200ms blink ➔ OK).</li>
+          <li><strong>Web Simulator Test:</strong> Verify live blinking state animations and dashboard controls in browser.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="controls">
+  <button class="btn" id="prev">◀ Previous</button>
+  <div style="font-weight: 700; color: var(--muted);">Slide <span id="current" style="color:var(--white);">1</span> of 10</div>
+  <button class="btn" id="next">Next ▶</button>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let index = 0;
+
+  function update() {
+    slides.forEach((s, i) => s.classList.toggle('active', i === index));
+    document.getElementById('current').textContent = index + 1;
+  }
+
+  document.getElementById('prev').onclick = () => { if (index > 0) { index--; update(); } };
+  document.getElementById('next').onclick = () => { if (index < slides.length - 1) { index++; update(); } };
+
+  document.onkeydown = (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ') { if (index < slides.length - 1) { index++; update(); } }
+    else if (e.key === 'ArrowLeft') { if (index > 0) { index--; update(); } }
+  };
+</script>
+
+</body>
+</html>

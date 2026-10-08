@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Security Alert Lamp | Live Dashboard & ESP32 Simulator</title>
+    <meta name="description" content="Real-time S3 Bucket Security Scanner and Physical ESP32 Red Alert Lamp Visualizer">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo-group">
+                <div class="logo-icon">🚨</div>
+                <div>
+                    <h1>Cloud Security Alert Lamp</h1>
+                    <p class="subtitle">AWS S3 Public Bucket Scanner & ESP32 IoT Physical Alert System</p>
+                </div>
+            </div>
+            <div class="status-badge-group">
+                <div id="system-status-badge" class="badge badge-ok">
+                    <span class="status-dot"></span>
+                    <span id="status-badge-text">SYSTEM SECURE</span>
+                </div>
+                <div class="badge badge-aws">
+                    <span class="aws-icon">☁️</span> AWS Learner Lab ($50)
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Layout Grid -->
+        <main class="dashboard-grid">
+            <!-- Left Column: Hardware Simulator -->
+            <section class="card hardware-card">
+                <div class="card-header">
+                    <h2><span class="icon">🔌</span> Physical ESP32 Hardware Simulator</h2>
+                    <span class="live-tag">LIVE SIMULATION</span>
+                </div>
+
+                <div class="esp32-visualizer">
+                    <div class="esp32-board">
+                        <div class="board-label">ESP32 DevKit v1</div>
+                        <div class="chip-center">
+                            <span class="chip-text">ESP-WROOM-32</span>
+                            <span class="chip-subtext">Wi-Fi + BT + TLS</span>
+                        </div>
+                        <div class="board-pin-header left-pins">
+                            <span>3V3</span><span>GND</span><span>D4</span><span>D2</span><span>RX2</span><span>TX2</span>
+                        </div>
+                        <div class="board-pin-header right-pins">
+                            <span>5V</span><span>GND</span><span>D13</span><span>D12</span><span>D14</span><span>D27</span>
+                        </div>
+                        <div class="onboard-led" id="onboard-led" title="GPIO 2 - Wi-Fi/MQTT Status"></div>
+                    </div>
+
+                    <!-- Breadboard Wiring Visualizer -->
+                    <div class="wire-path"></div>
+                    <div class="resistor-graphic" title="220 Ohm Resistor">
+                        <div class="resistor-band band-red"></div>
+                        <div class="resistor-band band-red"></div>
+                        <div class="resistor-band band-brown"></div>
+                        <div class="resistor-band band-gold"></div>
+                    </div>
+
+                    <!-- The Alert Lamp Component -->
+                    <div class="lamp-housing">
+                        <div class="lamp-glass" id="alert-lamp">
+                            <div class="lamp-filament"></div>
+                            <div class="lamp-glow" id="lamp-glow"></div>
+                        </div>
+                        <div class="lamp-base">ALERT LAMP (GPIO 4)</div>
+                    </div>
+                </div>
+
+                <!-- Simulator Controls -->
+                <div class="simulator-controls">
+                    <h3>Interactive Scenario Tester</h3>
+                    <p>Simulate security audit events to test physical LED behavior:</p>
+                    <div class="button-group">
+                        <button id="btn-trigger-alert" class="btn btn-danger">
+                            <span>⚠️</span> Trigger Public S3 Bucket Alert
+                        </button>
+                        <button id="btn-clear-alert" class="btn btn-success">
+                            <span>🛡️</span> Clear Security Alert (All Secure)
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Column: S3 Security Auditor & Console -->
+            <section class="card auditor-card">
+                <div class="card-header">
+                    <h2><span class="icon">🔍</span> AWS S3 Bucket Security Monitor</h2>
+                    <button id="btn-run-scan" class="btn btn-secondary btn-sm">
+                        <span>🔄</span> Run Manual Scan
+                    </button>
+                </div>
+
+                <div class="audit-summary-metrics">
+                    <div class="metric-box">
+                        <span class="metric-value" id="metric-total-buckets">3</span>
+                        <span class="metric-label">Total Buckets</span>
+                    </div>
+                    <div class="metric-box highlight-danger">
+                        <span class="metric-value" id="metric-public-buckets">0</span>
+                        <span class="metric-label">Public / Exposed</span>
+                    </div>
+                    <div class="metric-box">
+                        <span class="metric-value" id="metric-mqtt-messages">12</span>
+                        <span class="metric-label">MQTT Messages</span>
+                    </div>
+                </div>
+
+                <!-- Bucket Security Table -->
+                <div class="table-container">
+                    <table class="security-table">
+                        <thead>
+                            <tr>
+                                <th>Bucket Name</th>
+                                <th>Public Block</th>
+                                <th>Policy Status</th>
+                                <th>ACL Status</th>
+                                <th>Security State</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bucket-table-body">
+                            <!-- Dynamic Rows -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Real-Time MQTT Log Stream -->
+                <div class="console-box">
+                    <div class="console-header">
+                        <span>📡 AWS IoT Core MQTT Feed (`cloud/security/alerts`)</span>
+                        <span class="console-time" id="console-time">Live</span>
+                    </div>
+                    <div class="console-stream" id="mqtt-log-stream">
+                        <div class="log-line log-info">[SYSTEM] Initializing AWS IoT Core MQTT Subscriber...</div>
+                        <div class="log-line log-success">[AWS IoT] Connected to endpoint: a3xxxxxxx-ats.iot.us-east-1.amazonaws.com:8883</div>
+                        <div class="log-line log-info">[MQTT] Subscribed to topic: cloud/security/alerts</div>
+                        <div class="log-line log-success">[payload] {"status": "OK", "public_buckets_count": 0, "public_buckets": []}</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Lower Section: Interactive Architecture & Guide -->
+        <section class="card guide-card">
+            <div class="card-header">
+                <h2><span class="icon">📑</span> Project Architecture & Deployment Guides</h2>
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="tab-arch">System Architecture</button>
+                    <button class="tab-btn" data-tab="tab-wiring">Hardware Pinout</button>
+                    <button class="tab-btn" data-tab="tab-aws">AWS Student Deployment</button>
+                </div>
+            </div>
+
+            <div class="tab-content active" id="tab-arch">
+                <div class="arch-flow">
+                    <div class="flow-step">
+                        <div class="step-num">1</div>
+                        <h4>S3 Event / Cron</h4>
+                        <p>EventBridge triggers Lambda scanner every 5 minutes or on S3 bucket changes.</p>
+                    </div>
+                    <div class="flow-arrow">➡️</div>
+                    <div class="flow-step">
+                        <div class="step-num">2</div>
+                        <h4>Lambda Scanner</h4>
+                        <p>Python <code>boto3</code> checks PublicAccessBlock, Bucket Policy, and ACL Grants.</p>
+                    </div>
+                    <div class="flow-arrow">➡️</div>
+                    <div class="flow-step">
+                        <div class="step-num">3</div>
+                        <h4>AWS IoT Core</h4>
+                        <p>Publishes TLS MQTT JSON alert payload to <code>cloud/security/alerts</code>.</p>
+                    </div>
+                    <div class="flow-arrow">➡️</div>
+                    <div class="flow-step">
+                        <div class="step-num">4</div>
+                        <h4>ESP32 Red Lamp</h4>
+                        <p>Receives MQTT topic over TLS; blinks Red LED rapidly on <code>ALERT</code> state!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="tab-wiring">
+                <div class="code-preview">
+                    <pre><code>// Hardware Wiring Connections
+ESP32 GPIO 4  ---> [ 220 Ohm Resistor ] ---> Red LED Anode (+)
+ESP32 GND     ---------------------------> Red LED Cathode (-)
+ESP32 GPIO 2  ---> Onboard Wi-Fi Status LED Indicator</code></pre>
+                </div>
+            </div>
+
+            <div class="tab-content" id="tab-aws">
+                <div class="code-preview">
+                    <pre><code># 1. Provision AWS Backend & Secrets Header
+python cloud/deploy_aws.py
+
+# 2. Test Public Bucket Alert (Triggers Lamp)
+python cloud/test_vulnerable_bucket.py create
+
+# 3. Resolve Security Alert (Clears Lamp)
+python cloud/test_vulnerable_bucket.py delete</code></pre>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

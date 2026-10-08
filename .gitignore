@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+.venv/
+pyvenv.cfg
+
+# Secrets & Local Config
+.env
+firmware/include/secrets.h
+
+# Node / Web
+node_modules/
+dist/
+.DS_Store
+
+# Temporary & Lock files
+~$*.pptx
+*.tmp
